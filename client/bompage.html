@@ -1,0 +1,60 @@
+<template name="BOMPage">
+{{>BOMNav}}
+{{>testF}}
+</template>
+
+<template name="BOMNav">
+<div class="inner-nav"></div>
+</template>
+
+<template name="top">
+    <datalist id="bomlist">
+      <option value="-----New BOM Item-----"></option>
+    {{#each bomitem}}
+    <option value="{{bomID}}"> </option>
+    {{/each}}
+  </datalist>
+  <div class="topbar">
+  <form class="viewBOM"><select name="currbom" class="currbom" value=""><option value="" selected="selected">Choose to View</option>
+    {{#each bomitem}}<option value="{{bomID}}">{{bomID}}</option>{{/each}}
+  </select>
+</form></div>
+</template>
+
+
+<template name="testF">
+
+    {{>top}}
+    
+    {{#with items}}
+    {{setNotChild}}
+    {{> comment}}
+    {{removeTree}}
+    {{/with}}
+
+</template>
+
+
+<template name="itemTemp">
+
+  <span class="player {{selected}}">{{id}} - {{name}} {{#if isChild}} - {{qty}} {{/if}}<button class="addChild {{selected}}">Add Child</button><form class="addForm {{selected}} {{displayed}} form-inline"><label>Item Number:</label><input list="bomlist" name="bomid" class="bomid"/><label>Quantity Per:</label><input type="text" name="qty"/><button type= "submit" class="btn btn-primary btn-small">Add</button></form></span>
+
+
+  </template>
+
+<template name="comment">
+      <li type="square" class="{{! currClass}}" >{{#if items2}}<button class="toggleBOM" id="{{! currClass}}">-</button>{{/if}}
+        {{> itemTemp}}
+        {{addThis}}
+        
+        <ul type="square">
+          {{#each items2}} 
+        {{setIsChild}}
+        {{> comment}}
+        {{/each}}</ul>
+        {{removeThis}}
+        
+      </li>
+    
+
+</template>

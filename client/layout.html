@@ -1,0 +1,36 @@
+<template name="layout">
+<div class="container-fluid">
+
+	<header class="navbar">
+		{{>topnav}}
+	</header>
+
+
+<div id="main">
+	{{>yield}}
+</div>
+
+  
+</div>
+</template>
+
+<template name="topnav">
+<nav class="navbar navbar-default" role="navigation">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="coll
+apse" data-target="#navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+</button>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li><a href="/test">Submit Post</a></li>
+        </ul>
+       </div>
+
+  </nav>
+</template>
